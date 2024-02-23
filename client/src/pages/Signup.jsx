@@ -67,11 +67,11 @@ const Signup = () => {
             </div>
             <div>
               <Label value='Your email' />
-              <TextInput type='text' placeholder='name@company.com' id='email' onChange={handleChange} />
+              <TextInput type='email' placeholder='name@company.com' id='email' onChange={handleChange} />
             </div>
             <div>
               <Label value='Your password' />
-              <TextInput type='text' placeholder='Password' id='password' onChange={handleChange} />
+              <TextInput type='password' placeholder='Password' id='password' onChange={handleChange} />
             </div>
             <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
             {
@@ -83,7 +83,7 @@ const Signup = () => {
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Have an account?</span>
-            <Link to='/sign-in' className='text-blue-500'>
+            <Link to='/signin' className='text-blue-500'>
               Sign In
             </Link>
           </div>
