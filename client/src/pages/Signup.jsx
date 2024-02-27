@@ -75,17 +75,20 @@ const Signup = () => {
               <TextInput type='password' placeholder='Password' id='password' onChange={handleChange} />
             </div>
             <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
-            {
-              loading ? (
-                <Spinner size="sm" />
-              ): "Sign up"
-            }
+            {loading ? (
+                <>
+                  <Spinner size='sm' />
+                  <span className='pl-3'>Loading...</span>
+                </>
+              ) : (
+                'Sign Up'
+              )}
             </Button>
             <OAuth/>
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Have an account?</span>
-            <Link to='/signin' className='text-blue-500'>
+            <Link to='/sign-in' className='text-blue-500'>
               Sign In
             </Link>
           </div>
@@ -103,7 +106,6 @@ const Signup = () => {
 }
 
 export default Signup
-
 
 
 
