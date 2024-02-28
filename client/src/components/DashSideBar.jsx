@@ -1,7 +1,7 @@
 import React from 'react'
 import {Sidebar} from "flowbite-react"
 import {HiArrowRight, HiUser} from "react-icons/hi"
-import { useEffect , useState } from 'react'
+import { useEffect , useState, useRef } from 'react'
 import {Link, useLocation} from "react-router-dom"
 
 function DashSideBar() {
@@ -20,7 +20,7 @@ function DashSideBar() {
       <Sidebar.Items>
         <Sidebar.ItemGroup>
             <Link to= "/dashboard?tab=profile">
-            <Sidebar.Item active = {tab === "profile"} icon = {HiUser} label= {"user"} labelColor={"dark"}>
+            <Sidebar.Item active = {tab === "profile"} icon = {HiUser} label= {"user"} labelColor={"dark"}as = "div">
                 Profile
             </Sidebar.Item>
             </Link>
