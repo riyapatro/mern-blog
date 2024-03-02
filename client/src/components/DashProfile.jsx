@@ -8,11 +8,11 @@ import 'react-circular-progressbar/dist/styles.css';
 import { updateStart,updateSuccess,updateFailure } from '../redux/user/userSlice';
 import {HiOutlineExclamationCircle} from "react-icons/hi"
 import { deleteUserStart,deleteUserSuccess,deleteUserFailure ,signoutSucess} from '../redux/user/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const DashProfile = () => {
   const dispatch= useDispatch();
   const navigate = useNavigate()
-    const {currentUser , error} = useSelector((state)=>state.user)
+    const {currentUser , error , loading} = useSelector((state)=>state.user)
     const [imageFile , setImageFile] = useState(null)
     const [imageFileUrl , setImageFileUrl] = useState(null)
     const [imageFileUploadProgress , setImageFileUploadProgress] = useState(null)
@@ -202,9 +202,18 @@ const DashProfile = () => {
       />
       <TextInput type='password' id='password' placeholder='password' 
       onChange={handleChange}/>
-      <Button type='submit' gradientDuoTone='purpleToBlue' outline>
-          Update
+      <Button type='submit' gradientDuoTone='purpleToBlue' outline disabled= {loading || imageUploading}>
+         { loading ?  "loading..." : "Update"}
       </Button>
+      {
+        currentUser.isAdmin && (
+          <Link to= "/create-post" > 
+          <Button type='button' gradientDuoTone="purpleToBlue" outline className='w-full'>
+           Create a post
+          </Button>
+          </Link>
+        )
+      }
     </form>
     <div className="text-red-500 flex justify-between mt-5">
       <span onClick={()=>setShowModal(true)} className='cursor-pointer'>Delete Account</span>
